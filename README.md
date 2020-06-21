@@ -1,4 +1,4 @@
-# wh.im app template
+# text
 
 ## 概要
 wh.im上でテキストチャットを楽しむアプリです
