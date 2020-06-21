@@ -42,6 +42,9 @@ export default {
 <style lang="scss" scoped>
 .text {
   position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%);
   color: #ffffff;
   font-size: 30px;
   font-family: "Noto Sans JP", sans-serif;
