@@ -4,10 +4,14 @@
       <textarea class="text-area" v-model="text"></textarea>
       <a class="btn blue" @click="send">送信</a>
     </template>
-    <div class="text">{{ textSent }}</div>
+    <div class="text" v-if="textSent">
+      <span>{{ textSent }}</span>
+      <img :src="image_path(image)" alt="" />
+    </div>
   </div>
 </template>
 <script>
+const FUKIDASHI = ["01", "02", "03", "04", "14"];
 export default {
   name: "Player",
   props: {
@@ -28,13 +32,23 @@ export default {
     },
     textSent() {
       return this.$whim.state[this.displayUser.id] || "";
+    },
+    image() {
+      return (this.$whim.state.image || {})[this.displayUser.id];
     }
   },
   methods: {
     send() {
+      const fukidashi = FUKIDASHI[Math.floor(Math.random() * FUKIDASHI.length)];
       this.$whim.assignState({
-        [this.$whim.accessUser.id]: this.text
+        [this.$whim.accessUser.id]: this.text,
+        image: {
+          [this.$whim.accessUser.id]: `fukidashi${fukidashi}.png`
+        }
       });
+    },
+    image_path(slug) {
+      return require("@/assets/" + slug);
     }
   }
 };
@@ -79,5 +93,16 @@ export default {
       color: white;
     }
   }
+}
+span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+img {
+  width: 50vmin;
+  opacity: 0.8;
+  transform: rotate(180deg);
 }
 </style>
