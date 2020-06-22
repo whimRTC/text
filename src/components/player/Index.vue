@@ -4,7 +4,7 @@
       <textarea class="text-area" v-model="text"></textarea>
       <a class="btn blue" @click="send">送信</a>
     </template>
-    <div class="text" v-else>{{ textSent }}</div>
+    <div class="text">{{ textSent }}</div>
   </div>
 </template>
 <script>
