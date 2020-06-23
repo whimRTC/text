@@ -100,6 +100,7 @@ span {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  white-space: pre-line;
 }
 img {
   width: 50vmin;
